@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_main.c                                     :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 01:22:16 by dsohn             #+#    #+#             */
-/*   Updated: 2021/03/05 01:22:17 by dsohn            ###   ########.fr       */
+/*   Created: 2020/09/29 15:40:38 by dsohn             #+#    #+#             */
+/*   Updated: 2020/09/29 15:43:41 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-int main(int argc, char **argv)
+char	*ft_strchr(const char *s, int c)
 {
-	
+	while (*s != (char)c)
+		if (!*s++)
+			return (0);
+	return ((char*)s);
 }

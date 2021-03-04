@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_main.c                                     :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 01:22:16 by dsohn             #+#    #+#             */
-/*   Updated: 2021/03/05 01:22:17 by dsohn            ###   ########.fr       */
+/*   Created: 2020/09/29 14:20:56 by dsohn             #+#    #+#             */
+/*   Updated: 2020/09/30 01:55:39 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	
+	unsigned char	*p;
+
+	p = (unsigned char*)s;
+	while (n-- > 0)
+	{
+		if (*p == (unsigned char)c)
+			return (p);
+		p++;
+	}
+	return (NULL);
 }

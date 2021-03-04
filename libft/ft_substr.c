@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_main.c                                     :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 01:22:16 by dsohn             #+#    #+#             */
-/*   Updated: 2021/03/05 01:22:17 by dsohn            ###   ########.fr       */
+/*   Created: 2020/09/29 21:23:43 by dsohn             #+#    #+#             */
+/*   Updated: 2020/09/30 17:54:11 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
+#include <stdlib.h>
 
-int main(int argc, char **argv)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	
+	size_t	slen;
+	void	*dup;
+
+	if (s == NULL)
+		return (NULL);
+	if (ft_strlen(s) < start)
+		return (ft_strdup(""));
+	slen = ft_strlen(s + start);
+	len = (len < slen ? len : slen);
+	dup = malloc(len + 1);
+	if (dup)
+		ft_strlcpy(dup, s + start, len + 1);
+	return (dup);
 }
