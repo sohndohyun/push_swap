@@ -6,7 +6,7 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 21:39:13 by dsohn             #+#    #+#             */
-/*   Updated: 2021/03/05 01:16:51 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/06 03:22:30 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,24 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	return (dup);
 }
 
-char	*ft_freejoin(const char *s1, const char *s2)
+char	*ft_freejoin(char *s1, const char *s2)
 {
 	size_t	len1;
 	size_t	len2;
 	char	*dup;
 
-	if (s1 == NULL || s2 == NULL)
+	if (!s1 && !s2)
 		return (NULL);
+	else if (!s1 || !s2)
+		return (s1 ? s1 : ft_strdup(s2));
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
-	dup = (char*)malloc(len1 + len2 + 1);
-	if (dup)
+	if ((dup = (char*)malloc(sizeof(char) * (len1 + len2 + 1))))
 	{
 		ft_memcpy(dup, s1, len1);
+		free(s1);
 		ft_memcpy(dup + len1, s2, len2);
 		dup[len1 + len2] = 0;
-		free(s1);
 	}
 	return (dup);
 }

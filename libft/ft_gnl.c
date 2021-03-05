@@ -6,12 +6,14 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 01:15:24 by dsohn             #+#    #+#             */
-/*   Updated: 2021/03/05 01:21:52 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/06 03:22:21 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <limits.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 static int	isline(char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 11:23:51 by dsohn             #+#    #+#             */
-/*   Updated: 2021/03/05 01:21:33 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/06 02:56:41 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 
 # include <stddef.h>
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5000
-# endif
+# define BUFFER_SIZE 1
 
 typedef struct	s_list
 {
@@ -73,7 +71,8 @@ void			ft_lstiter(t_list *lst, void (*f)(void*));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void*), \
 					void (*del)(void*));
 void			*ft_lstat(t_list *lst, int at);
-char			*ft_freejoin(const char *s1, const char *s2);
+char			*ft_freejoin(char *s1, const char *s2);
 int				ft_gnl(int fd, char **line);
+int				ft_strcmp(const char *s1, const char *s2);
 
 #endif

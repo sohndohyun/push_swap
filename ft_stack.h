@@ -1,5 +1,17 @@
-#ifndef circular_stack_h
-#define circular_stack_h
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_stack.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/05 23:51:03 by dsohn             #+#    #+#             */
+/*   Updated: 2021/03/06 03:22:06 by dsohn            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef FT_STACK_H
+# define FT_STACK_H
 
 typedef struct		s_stack
 {
@@ -16,9 +28,9 @@ void				ft_stack_swap(t_stack *stack);
 int					ft_stack_push(t_stack *stack, int value);
 int					ft_stack_pop(t_stack *stack);
 int					ft_stack_top(t_stack *stack, int *value);
+int					ft_stack_last_idx(t_stack *stack);
 void				ft_stack_rotate(t_stack *stack);
 void				ft_stack_rrotate(t_stack *stack);
 int					ft_stack_check(t_stack *stack);
-void				ft_stack_debug(t_stack *stack, int fd);
 
 #endif

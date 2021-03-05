@@ -6,7 +6,7 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 01:22:05 by dsohn             #+#    #+#             */
-/*   Updated: 2021/03/05 01:22:07 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/06 03:23:45 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 t_stack			*ft_stack_alloc(unsigned int size)
 {
-	t_stack* temp;
+	t_stack	*temp;
 
 	if (size == 0)
 		return (NULL);
@@ -27,7 +27,7 @@ t_stack			*ft_stack_alloc(unsigned int size)
 		return (NULL);
 	}
 	temp->size = size;
-	temp->top = 0;
+	temp->top = temp->size - 1;
 	temp->way = -1;
 	temp->count = 0;
 	return (temp);
@@ -52,7 +52,7 @@ void			ft_stack_swap(t_stack *stack)
 
 int				ft_stack_push(t_stack *stack, int value)
 {
-	if (stack->count + 1 == stack->size)
+	if (stack->count == stack->size)
 		return (0);
 	stack->top = (stack->top + 1) % stack->size;
 	stack->array[stack->top] = value;

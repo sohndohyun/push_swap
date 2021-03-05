@@ -6,13 +6,13 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 03:07:17 by dsohn             #+#    #+#             */
-/*   Updated: 2020/12/13 03:37:46 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/06 03:25:13 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-double ft_atod(const char *str)
+double	ft_atod(const char *str)
 {
 	double val;
 	double multiple;

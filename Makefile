@@ -2,7 +2,7 @@ NAME = checker
 FLAGS =	-Wall -Wextra -Werror
 HEADER = -I. -I./libft/
 CC =	gcc
-SRCS =	main.c ft_stack.c ft_stack2.c
+SRCS =	checker_main.c ft_stack.c ft_stack2.c
 OBJS =	$(SRCS:.c=.o)
 
 all: $(NAME)

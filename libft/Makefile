@@ -50,11 +50,11 @@ OBJS = ${SRCS:.c=.o}
 all: $(NAME)
 bonus: all
 
-$(OBJS): $(SRCS)
-	gcc -Wall -Wextra -Werror -I. -c $(SRCS)
+.c.o: $(SRCS)
+	gcc -Wall -Werror -Wextra -I. -c -o $@ $<
 
 $(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
+	ar rc $@ $^
 
 clean:	
 	rm -f $(OBJS)
