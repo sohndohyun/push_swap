@@ -6,7 +6,7 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 23:51:03 by dsohn             #+#    #+#             */
-/*   Updated: 2021/03/06 03:22:06 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/07 03:34:40 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,8 @@ int					ft_stack_last_idx(t_stack *stack);
 void				ft_stack_rotate(t_stack *stack);
 void				ft_stack_rrotate(t_stack *stack);
 int					ft_stack_check(t_stack *stack);
+
+void				work_stack(t_stack *a, t_stack *b, char *str);
+t_stack				*argv_stack(int argc, char **argv);
 
 #endif
