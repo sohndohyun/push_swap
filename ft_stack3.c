@@ -6,12 +6,13 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 02:43:30 by dsohn             #+#    #+#             */
-/*   Updated: 2021/03/07 03:31:05 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/08 02:48:02 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_stack.h"
 #include "libft/libft.h"
+#include <unistd.h>
 #include <stdlib.h>
 
 static void		work_stack2(t_stack *a, t_stack *b, char *str)
@@ -80,6 +81,28 @@ void			work_stack(t_stack *a, t_stack *b, char *str)
 		work_stack0(a, b, str);
 }
 
+static void		check_overlap(t_stack *s)
+{
+	unsigned int i;
+	unsigned int j;
+
+	i = 0;
+	while (i < s->count)
+	{
+		j = i + 1;
+		while (j < s->count)
+		{
+			if (s->array[i] == s->array[j])
+			{
+				write(2, "Error!\n", 7);
+				exit(1);
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 t_stack			*argv_stack(int argc, char **argv)
 {
 	int		i;
@@ -89,18 +112,19 @@ t_stack			*argv_stack(int argc, char **argv)
 	stack = ft_stack_alloc(argc - 1);
 	if (stack == NULL)
 	{
-		ft_putendl_fd("Error!", 2);
+		write(2, "Error!\n", 7);
 		exit(1);
 	}
 	while (i > 0)
 	{
 		if (!ft_isdigit(*argv[i]))
 		{
-			ft_putendl_fd("Error!", 2);
+			write(2, "Error!\n", 7);
 			exit(1);
 		}
 		ft_stack_push(stack, ft_atoi(argv[i]));
 		i--;
 	}
+	check_overlap(stack);
 	return (stack);
 }
