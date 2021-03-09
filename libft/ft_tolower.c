@@ -6,13 +6,15 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 20:29:40 by dsohn             #+#    #+#             */
-/*   Updated: 2020/09/29 20:30:11 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/10 03:12:32 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tolower(int c)
+int	ft_tolower(int c)
 {
-	return ('A' <= c && c <= 'Z' ? c + 32 : c);
+	if ('A' <= c && c <= 'Z')
+		return (c + 32);
+	return (c);
 }

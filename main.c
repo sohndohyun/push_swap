@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_main.c                                     :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 01:22:16 by dsohn             #+#    #+#             */
-/*   Updated: 2021/03/10 02:35:13 by dsohn            ###   ########.fr       */
+/*   Created: 2021/03/08 14:45:49 by dsohn             #+#    #+#             */
+/*   Updated: 2021/03/10 03:22:12 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,6 @@ int	main(int argc, char **argv)
 	b = ft_stack_alloc(a->size);
 	if (!b)
 		error_error();
-	while ((ft_gnl(0, &line) > 0))
-	{
-		if (!ft_stack_work(a, b, line))
-			error_error();
-		free(line);
-	}
-	free(line);
-	if (ft_stack_check(a) && b->count == 0)
-		ft_putendl_fd("OK", 1);
-	else
-		ft_putendl_fd("KO", 1);
 	ft_stack_free(a);
 	ft_stack_free(b);
 	return (0);

@@ -6,13 +6,13 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 20:18:40 by dsohn             #+#    #+#             */
-/*   Updated: 2020/09/29 20:40:54 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/10 02:56:51 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isprint(int c)
+int	ft_isprint(int c)
 {
 	return (' ' <= c && c <= '~');
 }

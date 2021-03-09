@@ -6,7 +6,7 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 22:50:38 by dsohn             #+#    #+#             */
-/*   Updated: 2021/03/06 03:22:46 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/10 03:02:07 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 static int	ft_countblock(const char *s1, char c)
 {
-	int cnt;
-	int isf;
+	int	cnt;
+	int	isf;
 
 	cnt = 0;
 	isf = 1;
@@ -37,7 +37,7 @@ static int	ft_countblock(const char *s1, char c)
 
 static int	ft_blocklen(const char *s1, char c)
 {
-	const char *p;
+	const char	*p;
 
 	p = s1;
 	while (*s1 && *s1 != c)
@@ -53,7 +53,7 @@ static char	*ft_deallocresult(char **result, int i)
 	return (NULL);
 }
 
-char		**ft_split(const char *s1, char c)
+char	**ft_split(const char *s1, char c)
 {
 	int		bcnt;
 	int		blen;
@@ -63,7 +63,8 @@ char		**ft_split(const char *s1, char c)
 	if (s1 == NULL)
 		return (NULL);
 	bcnt = ft_countblock(s1, c);
-	if (!(result = (char**)malloc(sizeof(char*) * (bcnt + 1))))
+	result = (char **)malloc(sizeof(char *) * (bcnt + 1));
+	if (!result)
 		return (NULL);
 	result[bcnt] = 0;
 	i = 0;
@@ -72,17 +73,18 @@ char		**ft_split(const char *s1, char c)
 		while (*s1 && *s1 == c)
 			s1++;
 		blen = ft_blocklen(s1, c);
-		if (!(result[i] = (char*)malloc(sizeof(char) * (blen + 1))))
-			return ((char**)ft_deallocresult(result, i));
+		result[i] = (char *)malloc(sizeof(char) * (blen + 1));
+		if (!result[i])
+			return ((char **)ft_deallocresult(result, i));
 		ft_strlcpy(result[i++], s1, blen + 1);
 		s1 += blen;
 	}
 	return (result);
 }
 
-int			ft_split_cnt(char **line)
+int	ft_split_cnt(char **line)
 {
-	int i;
+	int	i;
 
 	if (line == NULL)
 		return (0);

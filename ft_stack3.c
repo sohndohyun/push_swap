@@ -6,7 +6,7 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 02:43:30 by dsohn             #+#    #+#             */
-/*   Updated: 2021/03/08 02:48:02 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/10 03:18:44 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-static void		work_stack2(t_stack *a, t_stack *b, char *str)
+static int	work_stack2(t_stack *a, t_stack *b, char *str)
 {
 	if (ft_strcmp(str, "ra") == 0)
 		ft_stack_rotate(a);
@@ -36,15 +36,13 @@ static void		work_stack2(t_stack *a, t_stack *b, char *str)
 		ft_stack_rrotate(b);
 	}
 	else
-	{
-		ft_putendl_fd("Error!", 2);
-		exit(1);
-	}
+		return (0);
+	return (1);
 }
 
-static void		work_stack0(t_stack *a, t_stack *b, char *str)
+static int	work_stack0(t_stack *a, t_stack *b, char *str)
 {
-	int temp;
+	int	temp;
 
 	if (ft_strcmp(str, "pa") == 0)
 	{
@@ -63,10 +61,11 @@ static void		work_stack0(t_stack *a, t_stack *b, char *str)
 		}
 	}
 	else
-		work_stack2(a, b, str);
+		return (work_stack2(a, b, str));
+	return (1);
 }
 
-void			work_stack(t_stack *a, t_stack *b, char *str)
+int	ft_stack_work(t_stack *a, t_stack *b, char *str)
 {
 	if (ft_strcmp(str, "sa") == 0)
 		ft_stack_swap(a);
@@ -78,13 +77,14 @@ void			work_stack(t_stack *a, t_stack *b, char *str)
 		ft_stack_swap(b);
 	}
 	else
-		work_stack0(a, b, str);
+		return (work_stack0(a, b, str));
+	return (1);
 }
 
-static void		check_overlap(t_stack *s)
+int	ft_stack_is_overlap(t_stack *s)
 {
-	unsigned int i;
-	unsigned int j;
+	unsigned int	i;
+	unsigned int	j;
 
 	i = 0;
 	while (i < s->count)
@@ -93,38 +93,10 @@ static void		check_overlap(t_stack *s)
 		while (j < s->count)
 		{
 			if (s->array[i] == s->array[j])
-			{
-				write(2, "Error!\n", 7);
-				exit(1);
-			}
+				return (1);
 			j++;
 		}
 		i++;
 	}
-}
-
-t_stack			*argv_stack(int argc, char **argv)
-{
-	int		i;
-	t_stack	*stack;
-
-	i = argc - 1;
-	stack = ft_stack_alloc(argc - 1);
-	if (stack == NULL)
-	{
-		write(2, "Error!\n", 7);
-		exit(1);
-	}
-	while (i > 0)
-	{
-		if (!ft_isdigit(*argv[i]))
-		{
-			write(2, "Error!\n", 7);
-			exit(1);
-		}
-		ft_stack_push(stack, ft_atoi(argv[i]));
-		i--;
-	}
-	check_overlap(stack);
-	return (stack);
+	return (0);
 }

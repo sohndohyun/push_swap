@@ -6,7 +6,7 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 21:59:58 by dsohn             #+#    #+#             */
-/*   Updated: 2020/09/30 17:54:39 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/10 03:08:58 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static size_t	ft_trimstart(const char *s1, const char *set, size_t len)
 {
-	size_t i;
+	size_t	i;
 
 	i = -1;
 	while (++i < len)
@@ -26,7 +26,7 @@ static size_t	ft_trimstart(const char *s1, const char *set, size_t len)
 
 static size_t	ft_trimend(const char *s1, const char *set, size_t len)
 {
-	size_t i;
+	size_t	i;
 
 	i = -1;
 	while (++i < len)
@@ -35,7 +35,7 @@ static size_t	ft_trimend(const char *s1, const char *set, size_t len)
 	return (len - i);
 }
 
-char			*ft_strtrim(const char *s1, const char *set)
+char	*ft_strtrim(const char *s1, const char *set)
 {
 	size_t	len;
 	size_t	start;
@@ -47,8 +47,11 @@ char			*ft_strtrim(const char *s1, const char *set)
 	len = ft_strlen(s1);
 	start = ft_trimstart(s1, set, len);
 	end = ft_trimend(s1, set, len);
-	len = (start < end ? end - start : 0) + 1;
-	dup = (char*)malloc(len);
+	if (start < end)
+		len = end - start + 1;
+	else
+		len = 1;
+	dup = (char *)malloc(len);
 	if (dup)
 		ft_strlcpy(dup, s1 + start, len);
 	return (dup);

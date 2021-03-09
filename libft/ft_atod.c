@@ -6,7 +6,7 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 03:07:17 by dsohn             #+#    #+#             */
-/*   Updated: 2021/03/06 03:25:13 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/10 03:08:37 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,18 @@
 
 double	ft_atod(const char *str)
 {
-	double val;
-	double multiple;
-	double sign;
+	double	val;
+	double	multiple;
+	double	sign;
 
 	val = 0;
 	multiple = 1;
 	sign = 1;
-	while (*str == ' ' || *str == '\n' || *str == '\t' ||
+	while (*str == ' ' || *str == '\n' || *str == '\t' || \
 			*str == '\v' || *str == '\f' || *str == '\r')
 		++str;
 	if (*str == '-')
 		sign = -1;
-	sign = *str == '-' ? -1 : 1;
 	if (*str == '-' || *str == '+')
 		++str;
 	while (ft_isdigit(*str))

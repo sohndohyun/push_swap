@@ -6,7 +6,7 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 02:09:50 by dsohn             #+#    #+#             */
-/*   Updated: 2020/09/30 18:09:40 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/10 02:41:25 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t nlen;
+	size_t	nlen;
 
 	if (!*needle)
 		return ((char*)haystack);

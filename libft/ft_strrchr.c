@@ -6,7 +6,7 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 15:44:49 by dsohn             #+#    #+#             */
-/*   Updated: 2020/09/30 17:59:54 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/10 03:08:50 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strrchr(const char *s, int c)
 	while (1)
 	{
 		if (*s == (char)c)
-			ret = (char*)s;
+			ret = (char *)s;
 		if (!*s)
 			break ;
 		s++;

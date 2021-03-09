@@ -6,7 +6,7 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 01:15:24 by dsohn             #+#    #+#             */
-/*   Updated: 2021/03/06 03:22:21 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/10 02:47:10 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 static int	isline(char *str)
 {
-	char *temp;
+	char	*temp;
 
 	if (!str)
 		return (-1);
@@ -36,7 +36,8 @@ static int	get_line(char **buf, int nline, char **line)
 	char	*temp;
 	int		len;
 
-	if (!(*line = (char*)malloc(sizeof(char) * (nline + 1))))
+	*line = (char *)malloc(sizeof(char) * (nline + 1));
+	if (!*line)
 		return (-1);
 	temp = NULL;
 	ft_memcpy(*line, *buf, nline);
@@ -44,7 +45,8 @@ static int	get_line(char **buf, int nline, char **line)
 	len = ft_strlen(*buf + nline + 1);
 	if (len > 0)
 	{
-		if (!(temp = (char*)malloc(sizeof(char) * (len + 1))))
+		temp = (char *)malloc(sizeof(char) * (len + 1));
+		if (!temp)
 			return (-1);
 		ft_memcpy(temp, *buf + nline + 1, len);
 		temp[len] = 0;
@@ -56,11 +58,12 @@ static int	get_line(char **buf, int nline, char **line)
 
 static int	return_left(int rlen, char **buf, char **line)
 {
-	int len;
+	int	len;
 
 	if (rlen < 0)
 		return (-1);
-	if ((len = isline(*buf)) >= 0)
+	len = isline(*buf);
+	if (len >= 0)
 		return (get_line(buf, len, line));
 	else if (*buf)
 	{
@@ -68,25 +71,28 @@ static int	return_left(int rlen, char **buf, char **line)
 		*buf = NULL;
 		return (0);
 	}
-	if (!(*line = (char*)malloc(sizeof(char))))
+	*line = (char *)malloc(sizeof(char));
+	if (!*line)
 		return (-1);
 	(*line)[0] = 0;
 	return (0);
 }
 
-int			ft_gnl(int fd, char **line)
+int	ft_gnl(int fd, char **line)
 {
-	static char		*save[OPEN_MAX] = { NULL, };
+	static char		*save[OPEN_MAX] = {NULL, };
 	char			buf[BUFFER_SIZE + 1];
 	int				rlen;
 
 	if (fd < 0 || OPEN_MAX < fd || !line || BUFFER_SIZE < 1)
 		return (-1);
-	while ((rlen = read(fd, buf, BUFFER_SIZE)) > 0)
+	rlen = read(fd, buf, BUFFER_SIZE);
+	while (rlen > 0)
 	{
 		buf[rlen] = 0;
 		save[fd] = ft_freejoin(save[fd], buf);
-		if ((rlen = isline(save[fd])) >= 0)
+		rlen = isline(save[fd]);
+		if (rlen >= 0)
 			return (get_line(&save[fd], rlen, line));
 	}
 	return (return_left(rlen, &save[fd], line));

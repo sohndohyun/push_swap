@@ -6,7 +6,7 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 15:20:43 by dsohn             #+#    #+#             */
-/*   Updated: 2020/09/30 17:52:38 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/10 02:48:16 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t srclen;
+	size_t	srclen;
 
 	if (dst == NULL || src == NULL)
 		return (0);

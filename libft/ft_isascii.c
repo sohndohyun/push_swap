@@ -6,13 +6,13 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 20:15:16 by dsohn             #+#    #+#             */
-/*   Updated: 2020/09/29 20:40:45 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/10 02:52:03 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isascii(int c)
+int	ft_isascii(int c)
 {
 	return (0 <= c && c < 128);
 }

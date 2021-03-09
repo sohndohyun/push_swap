@@ -6,7 +6,7 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 01:22:10 by dsohn             #+#    #+#             */
-/*   Updated: 2021/03/08 01:34:05 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/10 03:17:04 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include "libft/libft.h"
 
-int			ft_stack_top(t_stack *stack, int *value)
+int	ft_stack_top(t_stack *stack, int *value)
 {
 	if (stack->count == 0)
 		return (0);
@@ -22,35 +22,47 @@ int			ft_stack_top(t_stack *stack, int *value)
 	return (1);
 }
 
-int			ft_stack_last_idx(t_stack *stack)
+int	ft_stack_last_idx(t_stack *stack)
 {
-	unsigned int cm;
+	unsigned int	cm;
 
 	if (stack->count == 0)
 		return (stack->top);
 	cm = stack->count - 1;
-	return (stack->top < cm ?
-		stack->size - cm + stack->top : stack->top - cm);
+	if (stack->top < cm)
+		return (stack->size - cm + stack->top);
+	return (stack->top - cm);
 }
 
-void		ft_stack_rotate(t_stack *stack)
+void	ft_stack_rotate(t_stack *stack)
 {
-	unsigned int last;
+	unsigned int	last;
 
 	if (stack->count == stack->size)
-		stack->top = stack->top == 0 ? stack->size - 1 : stack->top - 1;
+	{
+		if (stack->top == 0)
+			stack->top = stack->size - 1;
+		else
+			stack->top--;
+	}
 	else
 	{
 		last = ft_stack_last_idx(stack);
-		last = last == 0 ? stack->size - 1 : last - 1;
+		if (last == 0)
+			last = stack->size - 1;
+		else
+			last--;
 		stack->array[last] = stack->array[stack->top];
-		stack->top = stack->top == 0 ? stack->size - 1 : stack->top - 1;
+		if (stack->top == 0)
+			stack->top = stack->size - 1;
+		else
+			stack->top--;
 	}
 }
 
-void		ft_stack_rrotate(t_stack *stack)
+void	ft_stack_rrotate(t_stack *stack)
 {
-	unsigned int last;
+	unsigned int	last;
 
 	if (stack->count == stack->size)
 		stack->top = (stack->top + 1) % stack->size;
@@ -62,7 +74,7 @@ void		ft_stack_rrotate(t_stack *stack)
 	}
 }
 
-int			ft_stack_check(t_stack *stack)
+int	ft_stack_check(t_stack *stack)
 {
 	unsigned int	i;
 	int				idx;
