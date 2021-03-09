@@ -6,7 +6,7 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 01:15:24 by dsohn             #+#    #+#             */
-/*   Updated: 2021/03/10 02:47:10 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/10 03:52:30 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	get_line(char **buf, int nline, char **line)
 	int		len;
 
 	*line = (char *)malloc(sizeof(char) * (nline + 1));
-	if (!*line)
+	if (!(*line))
 		return (-1);
 	temp = NULL;
 	ft_memcpy(*line, *buf, nline);
@@ -72,7 +72,7 @@ static int	return_left(int rlen, char **buf, char **line)
 		return (0);
 	}
 	*line = (char *)malloc(sizeof(char));
-	if (!*line)
+	if (!(*line))
 		return (-1);
 	(*line)[0] = 0;
 	return (0);
@@ -86,9 +86,11 @@ int	ft_gnl(int fd, char **line)
 
 	if (fd < 0 || OPEN_MAX < fd || !line || BUFFER_SIZE < 1)
 		return (-1);
-	rlen = read(fd, buf, BUFFER_SIZE);
-	while (rlen > 0)
+	while (1)
 	{
+		rlen = read(fd, buf, BUFFER_SIZE);
+		if (rlen <= 0)
+			break ;
 		buf[rlen] = 0;
 		save[fd] = ft_freejoin(save[fd], buf);
 		rlen = isline(save[fd]);

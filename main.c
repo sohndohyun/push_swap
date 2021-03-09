@@ -6,7 +6,7 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 14:45:49 by dsohn             #+#    #+#             */
-/*   Updated: 2021/03/10 03:22:12 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/10 03:31:02 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	char	*line;
+//	char	*line;
 
 	if (argc < 2)
 		return (1);

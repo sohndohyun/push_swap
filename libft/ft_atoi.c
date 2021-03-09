@@ -6,7 +6,7 @@
 /*   By: dsohn <dsohn@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 16:22:24 by dsohn             #+#    #+#             */
-/*   Updated: 2021/03/10 03:09:44 by dsohn            ###   ########.fr       */
+/*   Updated: 2021/03/10 03:29:45 by dsohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	ft_atoi(const char *str)
 	unsigned int	chk;
 	int				neg;
 
+	neg = 1;
 	res = 0;
 	chk = 214748364;
 	while (*str == ' ' || *str == '\n' || *str == '\t' || \
